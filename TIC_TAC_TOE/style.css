@@ -1,0 +1,105 @@
+/* *{
+    margin: 0;
+    padding: 0;
+} */
+body{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #002747;
+    color: white;
+}
+h1{
+    font-size: 100px;
+    padding: 0;
+    margin: 10px;
+    animation:glowPulse 2s infinite ease-in-out;
+}
+.glow-text {
+  display: inline-block;                 /* helps scale cleanly */
+  font-size: 3rem;
+  font-weight: 800;
+  color: #fff;
+  animation: glowPulse 2s ease-in-out infinite;
+  text-shadow: 0 0 10px #00f, 0 0 20px #0ff, 0 0 30px #0ff;
+  will-change: transform, text-shadow;
+}
+
+/* put this OUTSIDE any selector (not nested) */
+@keyframes glowPulse {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 10px #00f, 0 0 20px #0ff, 0 0 30px #0ff;
+  }
+  50% {
+    transform: scale(1.2);
+    text-shadow: 0 0 20px #0ff, 0 0 40px #0ff, 0 0 60px #0ff;
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 10px #00f, 0 0 20px #0ff, 0 0 30px #0ff;
+  }
+}
+
+.game{
+    display: grid;
+    /* background-color: #0B3954; */
+    width: auto;
+    border-radius:40px;
+    height: auto;
+    grid-template-columns:repeat(3,auto) ;
+    gap: 0px;
+    /* place-items:center; */
+    place-content: center;
+    gap: 10px;
+
+}
+.box{
+    border-radius: 40px;
+    padding: 10px;
+    background-color:#BFD7EA ;
+    height: 20vh;
+    width: 20vw;
+    font-size:15vh ;
+}
+.reset{
+    margin: 10px;
+    border-radius: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    background-color:#71E5FF ;
+    width: 15vw;
+    height: 10vh;
+}
+.WinnerTag {
+  font-size: 100px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.WinnerTag::before {
+  content: attr(data-text); /* dynamically copies the text */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    from 0deg,
+    #00f,
+    #0ff,
+    #0f0,
+    #ff0,
+    #f00,
+    #00f
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
